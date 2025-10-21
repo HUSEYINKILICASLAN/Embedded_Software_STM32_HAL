@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdbool.h>
+#include "timebase.h" //millis() ve elapsed() fonksiyonlari buradan gelir
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -87,7 +88,8 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-
+  uint32_t t_led = millis();   // Zaman sayaci baslangici, sistem acildigindan beri gecen sureyi milisaniye cinsinden geri dondurur
+  bool led_state = false;      // LED'in mevcut durumu (baslangicta kapali varsayalim)
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -97,6 +99,18 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  // Her 500 ms'de bir durum değiştir
+	     if (elapsed(&t_led, 500))     //elapsed() fonksiyonu belirtilen surenin gecip gecmedigini kontrol eder, gectiyse true geri dondurur
+	     {
+	       led_state = !led_state;  // LED durumunu tersine çevir
+
+	       if (led_state)
+	         HAL_GPIO_WritePin(User_Led_GPIO_Port, User_Led_Pin, GPIO_PIN_SET);    // LED ON
+	       else
+	         HAL_GPIO_WritePin(User_Led_GPIO_Port, User_Led_Pin, GPIO_PIN_RESET);  // LED OFF
+	     }
+
+	     // Diger islemler burada yapilabilir (non-blocking yapi)
   }
   /* USER CODE END 3 */
 }

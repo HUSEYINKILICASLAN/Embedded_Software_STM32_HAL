@@ -56,7 +56,29 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+typedef struct {
+    uint32_t start;
+    uint32_t delay_us;
+    uint8_t active;
+} DelayTimer_t;
 
+void Delay_Start(DelayTimer_t *t, uint32_t us)
+{
+    t->start = __HAL_TIM_GET_COUNTER(&htim2);
+    t->delay_us = us;
+    t->active = 1;
+}
+
+uint8_t Delay_IsExpired(DelayTimer_t *t)
+{
+    if (!t->active) return 1; // zaten bitmis
+    uint32_t now = __HAL_TIM_GET_COUNTER(&htim2);
+    if ((now - t->start) >= t->delay_us) {
+        t->active = 0;
+        return 1;
+    }
+    return 0;
+}
 /* USER CODE END 0 */
 
 /**
@@ -90,7 +112,9 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
+  HAL_TIM_Base_Start_IT(&htim2);
 
+  DelayTimer_t ledTimer1;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -100,6 +124,19 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+	if (Delay_IsExpired(&ledTimer1))
+		{
+	    	HAL_GPIO_TogglePin(User_Led3_Orange_GPIO_Port, User_Led3_Orange_Pin);
+	    	HAL_GPIO_TogglePin(User_Led4_Green_GPIO_Port, User_Led4_Green_Pin);
+	    	HAL_GPIO_TogglePin(User_Led5_Red_GPIO_Port, User_Led5_Red_Pin);
+	    	HAL_GPIO_TogglePin(User_Led6_Blue_GPIO_Port, User_Led6_Blue_Pin);
+	    	Delay_Start(&ledTimer1, 1000000); // 1 saniye bekleyip toggle yapiyor
+	    }
+
+
+	 	     // burada CPU baska isler yapabilir
+
   }
   /* USER CODE END 3 */
 }
@@ -227,7 +264,9 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim2){
+//	HAL_GPIO_TogglePin(User_Led5_Red_GPIO_Port, User_Led5_Red_Pin);
+//}
 /* USER CODE END 4 */
 
 /**

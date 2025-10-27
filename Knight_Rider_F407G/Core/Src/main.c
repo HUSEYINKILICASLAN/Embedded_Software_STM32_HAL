@@ -111,7 +111,7 @@ int main(void) {
 			HAL_Delay(70);
 		}
 
-		HAL_Delay(500);
+		//HAL_Delay(500);
 
 	}
 	/* USER CODE END 3 */

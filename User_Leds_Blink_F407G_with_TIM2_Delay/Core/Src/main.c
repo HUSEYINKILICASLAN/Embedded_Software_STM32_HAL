@@ -127,10 +127,10 @@ int main(void)
 
 	if (Delay_IsExpired(&ledTimer1))
 		{
-	    	HAL_GPIO_TogglePin(User_Led3_Orange_GPIO_Port, User_Led3_Orange_Pin);
-	    	HAL_GPIO_TogglePin(User_Led4_Green_GPIO_Port, User_Led4_Green_Pin);
-	    	HAL_GPIO_TogglePin(User_Led5_Red_GPIO_Port, User_Led5_Red_Pin);
-	    	HAL_GPIO_TogglePin(User_Led6_Blue_GPIO_Port, User_Led6_Blue_Pin);
+	    	HAL_GPIO_TogglePin(GPIOD, User_Led3_Orange_Pin | User_Led4_Green_Pin | User_Led5_Red_Pin | User_Led6_Blue_Pin);
+	    	//HAL_GPIO_TogglePin(User_Led4_Green_GPIO_Port, User_Led4_Green_Pin);
+	    	//HAL_GPIO_TogglePin(User_Led5_Red_GPIO_Port, User_Led5_Red_Pin);
+	    	//HAL_GPIO_TogglePin(User_Led6_Blue_GPIO_Port, User_Led6_Blue_Pin);
 	    	Delay_Start(&ledTimer1, 1000000); // 1 saniye bekleyip toggle yapiyor
 	    }
 

@@ -100,7 +100,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	  // Her 500 ms'de bir durum değiştir
-	     if (elapsed(&t_led, 500))     //elapsed() fonksiyonu belirtilen surenin gecip gecmedigini kontrol eder, gectiyse true geri dondurur
+	     if (elapsed(&t_led, 300))     //elapsed() fonksiyonu belirtilen surenin gecip gecmedigini kontrol eder, gectiyse true geri dondurur
 	     {
 	       led_state = !led_state;  // LED durumunu tersine çevir
 

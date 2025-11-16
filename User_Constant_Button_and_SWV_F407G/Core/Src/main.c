@@ -132,7 +132,6 @@ int main(void) {
 			}
 		}
 
-
 		/*
 		 if (button_state) {
 		 //HAL_GPIO_WritePin(User_led6_Blue_GPIO_Port, User_led6_Blue_Pin, 1);

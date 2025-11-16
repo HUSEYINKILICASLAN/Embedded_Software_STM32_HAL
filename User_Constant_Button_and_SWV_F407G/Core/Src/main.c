@@ -114,6 +114,8 @@ int main(void) {
 		 HAL_Delay(50);
 		 HAL_GPIO_WritePin(User_led3_Orange_GPIO_Port, leds[0], 0);
 		 */
+
+		//kalici buton
 		button_state = HAL_GPIO_ReadPin(User_Button_GPIO_Port, User_Button_Pin);
 		HAL_Delay(200);
 
@@ -177,6 +179,8 @@ int main(void) {
 		 }
 
 		 */
+
+		//serial wire viewer terminalde degiskenleri gorup debug amacli kullanmak
 		printf("button_counter:%d \r\n", button_counter);
 		printf("button_state:%d \r\n", button_state);
 		HAL_Delay(50);
@@ -268,6 +272,7 @@ static void MX_GPIO_Init(void) {
 }
 
 /* USER CODE BEGIN 4 */
+//printf fonksiyonunu kullanabilmek icin gereken kod, syscalls.c dosyasindan kopyalandi, original fonksiyondaki __io_putchar yerine ITM_SendChar yazildi
 int _write(int file, char *ptr, int len) {
 	(void) file;
 	int DataIdx;

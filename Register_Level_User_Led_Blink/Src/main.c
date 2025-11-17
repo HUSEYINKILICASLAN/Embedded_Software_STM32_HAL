@@ -47,7 +47,6 @@ int main(void)
 	GPIOA -> PUPDR &= ~(3<<(5*2));
 
 
-
 	/* Loop forever */
 	for(;;){
 		GPIOA -> ODR |= (1<<5);

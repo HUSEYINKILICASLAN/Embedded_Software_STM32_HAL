@@ -101,7 +101,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-	  HAL_UART_Transmit(&huart5, messageTX, 21, HAL_MAX_DELAY);
+	  HAL_UART_Transmit(&huart5, messageTX, sizeof(messageTX), HAL_MAX_DELAY);
 	  HAL_Delay(500);
 
   }

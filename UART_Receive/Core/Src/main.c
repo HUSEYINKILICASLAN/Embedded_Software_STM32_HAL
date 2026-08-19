@@ -230,7 +230,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 		} else if (strstr(messageBuffer, LED_OFF_COMMAND) != NULL) { //gelen karakterler dizisi off komutuna esit mi kontrol etmek icin yazildi
 			HAL_GPIO_WritePin(User_Led_GPIO_Port, User_Led_Pin, 0); //gelen karakter dizisi, off ise ledi sondur
 			bufferIndex = 0;                //buffer index i sifirla
-			memset(messageBuffer, 0, BUFFER_SIZE); //meddageBuffer dizisini buffer size kadar sifirla
+			memset(messageBuffer, 0, BUFFER_SIZE); //messageBuffer dizisini buffer size kadar sifirla
 		}
 	}
 

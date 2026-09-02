@@ -62,7 +62,7 @@ static void MX_ADC_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
-
+//DENEME
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/

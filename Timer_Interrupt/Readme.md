@@ -4,3 +4,4 @@ In this example, i used STM32 NUCLEO-F030R8 MB1136 C-04 development board for us
 
 https://github.com/user-attachments/assets/5862ebae-6043-4b69-97ae-e3dbe96ef6e5
 
+Citation: https://xbowtie.com/egitmen/arifmandal

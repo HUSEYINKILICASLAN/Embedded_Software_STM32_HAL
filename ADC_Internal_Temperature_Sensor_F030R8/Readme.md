@@ -18,6 +18,7 @@ In this example, i used STM32 NUCLEO-F030R8 MB1136 C-04 development board for us
 
 <img width="1363" height="377" alt="adc9" src="https://github.com/user-attachments/assets/69ce97ac-8e18-423a-9c67-aaf46f6e8e24" />
 
+<img width="1031" height="530" alt="adc10" src="https://github.com/user-attachments/assets/1f6e42db-c8cc-4243-942b-72c72d9a5e7c" />
 
 Citation: https://xbowtie.com/egitmen/arifmandal
 

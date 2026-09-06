@@ -3,6 +3,7 @@ In this example, i used STM32 NUCLEO-F030R8 MB1136 C-04 development board for re
 <img width="493" height="923" alt="ldr1" src="https://github.com/user-attachments/assets/2d53904d-9471-4eb3-acd9-6064cb2d4056" />
 
 <img width="1651" height="748" alt="ldr2" src="https://github.com/user-attachments/assets/1dc76aab-28c9-4003-9d45-1d1ad18bb323" />
+Citation: https://maker.robotistan.com/ldr/
 
 https://github.com/user-attachments/assets/b20b36f3-c17b-4619-98c8-392141567f0c
 

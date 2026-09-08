@@ -45,11 +45,11 @@ TIM_HandleTypeDef htim1;
 TIM_HandleTypeDef htim3;
 
 /* USER CODE BEGIN PV */
-uint32_t IC_Value1 = 0;	//
-uint32_t IC_Value2 = 0;
-uint32_t difference = 0;
-int Is_First_Capture = 0;
-float frequency = 0;
+uint32_t IC_Value1 = 0;	//birinci yakalanan degeri kaydetmek icin gereken degisken
+uint32_t IC_Value2 = 0;	//ikinci yakalanan degeri kaydetmek icin gereken degisken
+uint32_t difference = 0;//iki kenar arasinda gecen sureyi kaydetmek icin gereken degisken
+int Is_First_Capture = 0;	//yakalam degiskeni
+float frequency = 0;	//bulunan frekansi kaydetmek icin gereken degisken
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -70,25 +70,25 @@ void Set_PWM_Duty_Cycle(uint16_t duty) { //bu fonksiyon, LED parlaklığını ay
 	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, duty * 10); //Bu makro, STM32 mikrodenetleyicilerinde üretilen PWM sinyalinin Duty Cycle (Görev Döngüsü / Doluluk Oranı) değerini anlık olarak değiştirmek için kullanılan donanımsal bir makro komuttur. Bu komut, doğrudan ilgili Timer'ın CCR (Capture/Compare Register) adındaki donanım kaydına (hafıza hücresine) belirlediğiniz "Pulse" (adım) değerini yazar. Bu komut arka planda karmaşık C kodları çalıştırmaz. Doğrudan işlemcinin register adresine eriştiği için sadece 1 veya 2 saat çevriminde (birkaç nanosaniyede) tamamlanır. Bu sayede motor kontrolü veya hassas LED parlaklık ayarı yaparken işlemciyi hiç yormaz ve gecikmeye neden olmaz.
 }
 
-void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
-	if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1) {
-		if (Is_First_Capture == 0) {
-			IC_Value1 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);
-			Is_First_Capture = 1;
+void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {//pwm sinyalinin kenarlarini yakalamak icin gereken program
+	if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1) {//gelen PWM sinyalinin timer1 in 1nci kanalindan gelip gelmedigini kontrol etmek icin yazildi.
+		if (Is_First_Capture == 0) {	//yakalama degiskeni
+			IC_Value1 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);	//PWM in yukselen kenarini yakalayip gecen sureyi IC_Value1 degiskenine yaz
+			Is_First_Capture = 1;	//yakalama degiskeni
 		} else {
-			IC_Value2 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);
+			IC_Value2 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);	//aynı PWM in ikinci yukselen kenarini yakalayip gecen sureyi IC_Value2 degiskenine yaz
 
 			if (IC_Value2 > IC_Value1) {
-				difference = IC_Value2 - IC_Value1;
+				difference = IC_Value2 - IC_Value1;	//iki sureyi birbirinden cikarip periyot suresini bulmak icin yazildi
 			} else if (IC_Value2 < IC_Value1) {
 				difference = (0xffff - IC_Value1) + IC_Value2;
 			}
 
-			float Reference_Clock = TIMCLOCK / PRESCALER;
+			float Reference_Clock = TIMCLOCK / PRESCALER;//prescaler dan sonra kalan frekans
 
-			frequency = Reference_Clock / difference;
-			__HAL_TIM_SET_COUNTER(htim, 0);
-			Is_First_Capture = 0;
+			frequency = Reference_Clock / difference;//kalan frekansi buldugun periyot suresine bol ve frekansi bul
+			__HAL_TIM_SET_COUNTER(htim, 0);	//sayici handler sifirlandi
+			Is_First_Capture = 0;	//yakalama degiskeni sifirlandi
 		}
 	}
 }

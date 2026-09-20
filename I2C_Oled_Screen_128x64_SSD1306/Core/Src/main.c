@@ -42,7 +42,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
-
+//DENEME
 /* USER CODE BEGIN PV */
 char name[] = "Huseyin";	//isim yazdirmak icin karakter dizisi tanimlandi
 /* USER CODE END PV */

@@ -1,4 +1,4 @@
-In this study, I used an 8x8 dot matrix module driven by the MAX7219 chip, along with the STM32 NUCLEO-F030R8 (MB1136 C-04) development board. I created the `max7219.c` and `max7219.h` files and powered the module using an external power supply. In the `main.c` file, I displayed sequences of numbers and letters on the screen using a `for` loop.
+In this study, I used an 8x8 dot matrix module driven by the MAX7219 chip, along with the STM32 NUCLEO-F030R8 (MB1136 C-04) development board. I created the `max7219.c` and `max7219.h` files and powered the module using an external power supply (MB102 breadboard power supply). In the `main.c` file, I displayed sequences of numbers and letters on the screen using a `for` loop.
 
 <img width="1311" height="834" alt="max7219_1" src="https://github.com/user-attachments/assets/4264ee68-90d0-404f-8e57-77e325fff4a0" />
 

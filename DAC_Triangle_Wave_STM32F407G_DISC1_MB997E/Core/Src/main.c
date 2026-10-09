@@ -45,7 +45,7 @@ DAC_HandleTypeDef hdac;
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
-
+//DENEME
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/

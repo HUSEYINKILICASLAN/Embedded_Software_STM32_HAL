@@ -1,4 +1,4 @@
-In this example, I used the STM32F407G-Disc1 MB997E Discovery Development Board for generating noise signal. I used HAL_DACEx_NoiseWaveGenerate() function for this. I used TIM2 for trigger.
+In this example, I used the STM32F407G-Disc1 MB997E Discovery Development Board for generating noise signal. I used HAL_DACEx_NoiseWaveGenerate() function for this. I used TIM2 for trigger. I used a green LED for observing the signal. I connected PA4 pin to LED's positive terminal and GND pin to board's GND terminal. I used 1 k resistor for protecting LED.
 
 <img width="1552" height="1069" alt="DAC_noise_signal_STM32F407G_DISC1_MB997E_1" src="https://github.com/user-attachments/assets/f7bb4068-83dd-48c7-97f3-cadf83aad652" />
 

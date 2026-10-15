@@ -1,1 +1,0 @@
-In this project i used STM32 NUCLEO-F030R8 (MB1136 C-04) development board. I used memory to memory data transfer with DMA1 module. I transfered source datas to destination array. I used HAL_DMA_PollForTransfer() function for controlling transfer by successfully.

@@ -58,7 +58,7 @@ static void MX_ADC_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+//DENEME
 /* USER CODE END 0 */
 
 /**

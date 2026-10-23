@@ -10,7 +10,9 @@ In this example, I used the STM32 NUCLEO-F030R8 (MB1136 C-04) development board 
 
 <img width="1339" height="1066" alt="perif_to_mem_and_mem_to_perif_5" src="https://github.com/user-attachments/assets/9a9782b5-69f7-4eab-8569-9b6c7146841e" />
 
-<img width="1336" height="1067" alt="dma_mem_to_perip_1" src="https://github.com/user-attachments/assets/2699626b-0f0b-4965-8f9e-41a98e5bd44c" />
+<img width="1339" height="1067" alt="perif_to_mem_and_mem_to_perif_6" src="https://github.com/user-attachments/assets/daedc662-3692-4057-b852-4eba193f17a5" />
+
+<img width="1337" height="1065" alt="perif_to_mem_and_mem_to_perif_7" src="https://github.com/user-attachments/assets/d3755bf3-8f9f-4cfe-b2c0-f073295f5953" />
 
 <img width="1335" height="1065" alt="dma_mem_to_perip_2" src="https://github.com/user-attachments/assets/f38b5c3f-ec9b-4415-a514-a4a2b1610f4c" />
 

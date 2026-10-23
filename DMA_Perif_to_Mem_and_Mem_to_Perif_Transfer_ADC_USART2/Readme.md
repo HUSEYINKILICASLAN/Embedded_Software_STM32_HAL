@@ -28,6 +28,8 @@ In this example, I used the STM32 NUCLEO-F030R8 (MB1136 C-04) development board.
 
 <img width="1338" height="1068" alt="perif_to_mem_and_mem_to_perif_14" src="https://github.com/user-attachments/assets/936d7386-dbd3-4970-81eb-d403a2ead73d" />
 
+<img width="1339" height="1067" alt="perif_to_mem_and_mem_to_perif_15" src="https://github.com/user-attachments/assets/957f4c28-6a46-4d84-969a-7dfab937b21d" />
+
 <img width="1338" height="1067" alt="perif_to_mem_and_mem_to_perif_16" src="https://github.com/user-attachments/assets/bcd6dc42-1c6f-4f70-88f2-042854ef061a" />
 
 <img width="1338" height="1068" alt="perif_to_mem_and_mem_to_perif_17" src="https://github.com/user-attachments/assets/5ca44092-e27a-4433-9f2b-5f93c0344350" />

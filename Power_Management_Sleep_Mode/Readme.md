@@ -13,20 +13,6 @@ In this example, I used the STM32 NUCLEO-F030R8 (MB1136 C-04) development board.
 
 <img width="1282" height="728" alt="guc_yonetimi_6" src="https://github.com/user-attachments/assets/1e3f6046-ba92-4bb1-bcea-fd60891865b0" />
 
-<img width="1341" height="1066" alt="guc_yonetimi_7" src="https://github.com/user-attachments/assets/826b218b-f5f6-4105-838e-e1145d4adbb7" />
-
-<img width="1341" height="1068" alt="guc_yonetimi_8" src="https://github.com/user-attachments/assets/3c3fe077-39ba-4478-9eb6-81e6c2cea00c" />
-
-<img width="1342" height="1068" alt="guc_yonetimi_9" src="https://github.com/user-attachments/assets/9bbad612-c82e-413c-b489-2b732ec153be" />
-
-<img width="1340" height="1066" alt="guc_yonetimi_10" src="https://github.com/user-attachments/assets/d2320b5b-c60f-4fed-9c3d-e2f863514a99" />
-
-<img width="1343" height="1067" alt="guc_yonetimi_11" src="https://github.com/user-attachments/assets/0c9622e3-4be4-4ecb-854b-78bda6e1354d" />
-
-<img width="1342" height="1067" alt="guc_yonetimi_12" src="https://github.com/user-attachments/assets/4dc064ac-2073-4506-b82f-fca9e5346472" />
-
-<img width="1339" height="1068" alt="guc_yonetimi_13" src="https://github.com/user-attachments/assets/3f0e7440-1101-4e6d-8946-b14cbd180683" />
-
 Citation: https://xbowtie.com/egitmen/arifmandal
 
 <img width="1250" height="1065" alt="pwr_sleep_1" src="https://github.com/user-attachments/assets/108809e2-8012-476e-897e-61d835b046e0" />

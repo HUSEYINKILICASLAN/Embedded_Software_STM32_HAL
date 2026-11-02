@@ -43,9 +43,7 @@
 IWDG_HandleTypeDef hiwdg;
 
 /* USER CODE BEGIN PV */
-uint32_t flash_address = 0x0800FC00; // STM32F030R8 son sayfa adresi
-uint16_t flash_data = 0x0045;        // Yazmak istediğiniz 16-bitlik veri
-uint32_t read_data = 0;              // Sonucu doğrulamak için 32-bit okuma değişkeni
+//DENEME
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -58,68 +56,7 @@ static void MX_IWDG_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-/**
-  * @brief  HAL typedef yapılarını kullanarak kalan alanları sıfırlar ve 16-bit veriyi yazar.
-  * @param  address: Yazılacak Flash adresi
-  * @param  data: Yazılacak 16-bitlik veri
-  * @retval HAL_StatusTypeDef: İşlem durumu sonucu
-  */
-HAL_StatusTypeDef Write_Flash_16Bit_Typedef(uint32_t address, uint16_t data) {
-    HAL_StatusTypeDef status;
-    FLASH_EraseInitTypeDef eraseInitStruct;
-    uint32_t pageError = 0;
 
-    // 1. Lock and Unlock: FLASH arayüzünün kilidini aç
-    HAL_FLASH_Unlock();
-
-    // 2. Monitor/Clear Flags: Eski işlem ve hata bayraklarını temizle
-    __HAL_FLASH_CLEAR_FLAG(FLASH_FLAG_EOP | FLASH_FLAG_WRPERR | FLASH_FLAG_PGERR);
-
-    // Silme öncesi köpeği besle
-    HAL_IWDG_Refresh(&hiwdg);//IWDG devredeyken Flash silme ve yazma işlemleri sırasında mikrodenetleyicinin reset yememesi için Write_Flash_16Bit_Raw fonksiyonunun içine bekçi köpeğini besleme satırını (HAL_IWDG_Refresh) da eklemek kritik bir önem taşır.
-
-    // 3. Erase Function: Typedef struct yapısını doldur ve sayfayı sil
-    eraseInitStruct.TypeErase   = FLASH_TYPEERASE_PAGES;
-    eraseInitStruct.PageAddress = address;
-    eraseInitStruct.NbPages     = 1; // Sadece ilgili 1 sayfayı sil
-
-    status = HAL_FLASHEx_Erase(&eraseInitStruct, &pageError);
-    if (status != HAL_OK) {
-        HAL_FLASH_Lock(); // Silme başarısızsa kilitle ve çık
-        return status;
-    }
-
-    // 4. Program Functions:
-    // İlk adım: Sizin gönderdiğiniz 16-bitlik veriyi yaz (0x0045)
-    HAL_IWDG_Refresh(&hiwdg);//IWDG devredeyken Flash silme ve yazma işlemleri sırasında mikrodenetleyicinin reset yememesi için Write_Flash_16Bit_Raw fonksiyonunun içine bekçi köpeğini besleme satırını (HAL_IWDG_Refresh) da eklemek kritik bir önem taşır.
-    status = HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD, address, data);
-    if (status != HAL_OK) {
-        HAL_FLASH_Lock();
-        return status;
-    }
-
-    // İkinci adım: Üst byte'ların 0xFFFF kalmasını önlemek için ardışık adrese 0x0000 yaz
-    HAL_IWDG_Refresh(&hiwdg);//IWDG devredeyken Flash silme ve yazma işlemleri sırasında mikrodenetleyicinin reset yememesi için Write_Flash_16Bit_Raw fonksiyonunun içine bekçi köpeğini besleme satırını (HAL_IWDG_Refresh) da eklemek kritik bir önem taşır.
-    status = HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD, address + 2, 0x0000);
-    if (status != HAL_OK) {
-        HAL_FLASH_Lock();
-        return status;
-    }
-
-    // 5. Lock and Unlock: İşlem bitince FLASH arayüzünü tekrar kilitle
-    HAL_FLASH_Lock();
-
-    return HAL_OK;
-}
-
-/**
-  * @brief  Flash adresinden tam 32-bit (4 byte) okuma yapar.
-  * @param  address: Okunacak Flash adresi
-  * @retval 32-bitlik tam veri
-  */
-uint32_t Read_Flash_32Bit_Typedef(uint32_t address) {
-    return *(volatile uint32_t*)address;
-}
 /* USER CODE END 0 */
 
 /**
@@ -153,11 +90,6 @@ int main(void) {
 	MX_IWDG_Init();
 	/* USER CODE BEGIN 2 */
 	HAL_IWDG_Init(&hiwdg);
-
-		// Typedef tabanlı fonksiyonu çağırarak yazma ve okuma işlemlerini doğrula
-		if (Write_Flash_16Bit_Typedef(flash_address, flash_data) == HAL_OK) {
-			read_data = Read_Flash_32Bit_Typedef(flash_address); // Sonuç: 0x00000045
-		}
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
@@ -166,7 +98,7 @@ int main(void) {
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
-		HAL_IWDG_Refresh(&hiwdg);//IWDG devredeyken Flash silme ve yazma işlemleri sırasında mikrodenetleyicinin reset yememesi için Write_Flash_16Bit_Raw fonksiyonunun içine bekçi köpeğini besleme satırını (HAL_IWDG_Refresh) da eklemek kritik bir önem taşır.
+		HAL_IWDG_Refresh(&hiwdg);
 
 		HAL_GPIO_WritePin(User_LED_Green_GPIO_Port, User_LED_Green_Pin,	GPIO_PIN_SET);
 		HAL_Delay(1000);

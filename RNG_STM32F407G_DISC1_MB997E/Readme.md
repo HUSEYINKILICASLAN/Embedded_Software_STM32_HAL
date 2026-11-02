@@ -1,4 +1,4 @@
-In this example, I used the STM32 NUCLEO-F030R8 (MB1136 C-04) development board.
+In this example, I used the STM32F407G-DISC1 (MB997E) development board.
 
 
 <img width="1393" height="914" alt="rng_1" src="https://github.com/user-attachments/assets/f9d6426b-7726-451f-afa8-39171901b4e1" />
